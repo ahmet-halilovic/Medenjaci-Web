@@ -1,0 +1,51 @@
+footer {
+  background-color: var(--footer-color);
+  color: white;
+  padding: 25px 100px;
+}
+
+#info-wrapper div {
+  margin-right: 35px;
+}
+
+fa-icon {
+  color: var(--secondary-color);
+}
+
+.contact-info {
+  font-family: 'Quicksand';
+  font-size: 20px;
+}
+
+.contact-info span {
+  font-weight: 300;
+}
+
+.contact-info span b {
+  font-weight: 700;
+}
+
+.additional-info {
+  font-family: 'Quicksand';
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.heading {
+  font-weight: 700;
+}
+
+hr {
+  background-color: white;
+}
+
+.copyrights-wrapper {
+  padding: 0 75px;
+}
+
+.copyrights {
+  font-family: 'Quicksand';
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+}

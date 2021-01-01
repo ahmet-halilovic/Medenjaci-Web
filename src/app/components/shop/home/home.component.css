@@ -1,0 +1,60 @@
+.wrapper {
+  height: 100vh;
+}
+
+.bee-background {
+  background-image: url("../../../../assets/images/bee-hive.jpg");
+  background-size: 100% 100%;
+  height: 65%;
+  width: 100%;
+  padding: 15px 35px 50px 0;
+}
+
+.bee-background h1 {
+  font-family: 'Kalam';
+  font-weight: 700;
+  text-shadow: 2px 2px black;
+  color: ghostwhite;
+}
+
+.bee-background button {
+  background-color: var(--secondary-color);
+  padding: 15px 40px;
+  color: var(--footer-color);
+
+  border: 0px;
+  border-radius: 35px;
+}
+
+.bee-background button:hover {
+  background-color: rgb(255, 235, 32);
+}
+
+.box-container {
+  min-height: 130px;
+  max-width: 850px;
+  width: 100%;
+  border: 1px solid gray;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+
+  width: 33%;
+  padding: 0 20px;
+
+  font-family: 'Quicksand';
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.box fa-icon {
+  margin: auto 15px auto 0;
+  color: var(--secondary-color);
+  font-size: 32px;
+}
+
+.box .heading {
+  font-weight: 700;
+}

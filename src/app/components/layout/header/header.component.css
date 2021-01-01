@@ -1,0 +1,48 @@
+.navbar {
+  background-color: var(--main-color);
+  padding: 0 35px;
+}
+
+.navbar-brand img {
+  width: 90px;
+  height: 100px;
+}
+
+.navbar-brand {
+  font-family: 'Kalam';
+  font-size: 32px;
+  font-weight: 700;
+  color: black;
+}
+
+#nav-ul {
+  font-family: 'Quicksand';
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#nav-ul > li > a {
+  color: black;
+}
+
+#contact-info {
+  font-family: 'Quicksand';
+  font-size: 20px;
+}
+
+#contact-info span {
+  font-weight: 300;
+}
+
+#contact-info span b{
+  font-weight: 600;
+}
+
+#right-ul li {
+  margin: auto;
+}
+
+fa-icon {
+  color: var(--secondary-color);
+  font-size: 42px;
+}

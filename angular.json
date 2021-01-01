@@ -124,5 +124,12 @@
       }
     }
   },
-  "defaultProject": "Medenjaci-Web"
+  "defaultProject": "Medenjaci-Web",
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "skipTests": true
+      }
+    }
+  }
 }
