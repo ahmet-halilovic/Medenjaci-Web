@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --main-color: rgb(255, 255, 255);
+  --secondary-color: rgb(247, 218, 0);
+  --footer-color: rgb(57, 56, 56);
+}
