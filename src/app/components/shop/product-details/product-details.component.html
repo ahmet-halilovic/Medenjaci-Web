@@ -1,0 +1,40 @@
+<div class="wrapper d-flex flex-row">
+  <div class="left-content d-flex flex-column align-items-center">
+    <img src="assets/images/livadski-med.jpg" class="mt-5 mb-1"/>
+
+    <div class="info-block mb-2">
+      <span><b>Način korišćenja - </b>Preporučeno je da se koristi svako jutro.</span>
+    </div>
+  </div>
+
+  <div class="right-content d-flex flex-column justify-content-center">
+    <div class="product-recap">
+      <div class="d-flex flex-row justify-content-between">
+        <h4>Livadski med</h4>
+        <span class="availability">Na stanju</span>
+      </div>
+      <p>450 dinara</p>
+      <hr>
+      <span>Neguje zdravlje.</span>
+      <div class="quantityContainer mt-2">
+        <form [formGroup]="myForm">
+          <label for="quantity">Količina: </label>
+          <input
+            type="number"
+            id="quantity"
+            formControlName="quantity"
+            min="1"
+            max="5"
+          />
+          <div *ngIf="f.quantity.errors" class="error">
+            Unesite količinu između 1-5.
+          </div>
+        </form>
+      </div>
+      <br>
+      <div class="d-flex flex-row justify-content-center mb-1">
+        <button>Dodaj u korpu</button>
+      </div>
+    </div>
+  </div>
+</div>

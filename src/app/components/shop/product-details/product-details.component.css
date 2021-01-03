@@ -1,0 +1,73 @@
+.wrapper {
+  height: 100vh;
+  font-family: 'Quicksand';
+}
+
+.left-content {
+  width: 65%;
+}
+
+.left-content img {
+  width: 75%;
+  height: 70%;
+}
+
+.left-content .info-block {
+  min-height: 250px;
+  width: 75%;
+
+  padding: 15px 20px;
+
+  border: 1px solid gray;
+}
+
+.right-content {
+  width: 35%;
+}
+
+.product-recap {
+  width: 75%;
+  border: 1px solid gray;
+  padding: 10px 20px;
+}
+
+.product-recap h3 {
+  font-weight: bold;
+}
+
+.product-recap .availability {
+  font-weight: 400;
+  color: var(--secondary-color);
+}
+
+.product-recap p {
+  font-weight: 400;
+}
+
+.product-recap span {
+  font-weight: 300;
+}
+
+.product-recap button {
+  background-color: var(--secondary-color);
+  padding: 10px 40px;
+  color: var(--footer-color);
+
+  border: 0px;
+  border-radius: 35px;
+}
+
+.product-recap button:hover {
+  background-color: rgb(255, 235, 32);
+}
+
+.product-recap .quantityContainer input {
+  width: 100px;
+  margin-left: 10px;
+  margin-top: 1px;
+}
+
+.product-recap .error {
+  color: #d9534f;
+}
+
