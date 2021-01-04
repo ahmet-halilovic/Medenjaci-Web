@@ -7,10 +7,16 @@
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mx-auto" id="nav-ul">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Početna</a>
+        <a class="nav-link" [routerLink]="['']" [ngClass]="activePage === 'home' ? 'active' : ''"
+           (click)="setActivePage('home')">
+          Početna
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Prodavnica</a>
+        <a class="nav-link" [routerLink]="['shop']" [ngClass]="activePage === 'shop' ? 'active' : ''"
+           (click)="setActivePage('shop')">
+          Prodavnica
+        </a>
       </li>
     </ul>
 

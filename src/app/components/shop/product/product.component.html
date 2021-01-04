@@ -1,6 +1,6 @@
 <div class="card m-3" style="max-width: 18rem">
   <div class="imageContainer">
-    <img src="assets/images/livadski-med.jpg" class="card-img-top"/>
+    <img src="{{product.picture}}" class="card-img-top"/>
     <div
       class="card-img-overlay d-flex flex-column justify-content-center align-items-center"
     >
@@ -11,9 +11,9 @@
   </div>
   <div class="card-body d-flex flex-column justify-content-center align-items-center">
     <div class="d-flex flex-row justify-content-between w-100">
-      <h6>Livadski med</h6>
-      <p>800 RSD</p>
+      <h6>{{product.name}}</h6>
+      <p>{{product.price}} RSD</p>
     </div>
-    <a>Detaljnije</a>
+    <a (click)="navigateToProductDetails()">Detaljnije</a>
   </div>
 </div>
