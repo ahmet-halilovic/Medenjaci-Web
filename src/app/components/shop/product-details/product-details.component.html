@@ -6,26 +6,26 @@
         <li class="breadcrumb-item"><a href="#">Početna</a></li>
         <li class="breadcrumb-item"><a href="#">Prodavnica</a></li>
         <li class="breadcrumb-item"><a href="#">Med</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Livadski med</li>
+        <li class="breadcrumb-item active" aria-current="page">{{product.name}}</li>
       </ol>
     </nav>
 
-    <img src="assets/images/livadski-med.jpg" class="mt-2 mb-1"/>
+    <img src="{{product.picture}}" class="mt-2 mb-1"/>
 
     <div class="info-block mb-2">
-      <span><b>Način korišćenja - </b>Preporučeno je da se koristi svako jutro.</span>
+      <span><b>Način korišćenja - </b>{{product.manual}}</span>
     </div>
   </div>
 
   <div class="right-content d-flex flex-column justify-content-center">
     <div class="product-recap">
       <div class="d-flex flex-row justify-content-between">
-        <h4>Livadski med</h4>
+        <h4>{{product.name}}</h4>
         <span class="availability">Na stanju</span>
       </div>
-      <p>450 dinara</p>
+      <p>{{product.price}} RSD</p>
       <hr>
-      <span>Neguje zdravlje.</span>
+      <span>{{product.description}}</span>
       <div class="quantityContainer mt-2">
         <form [formGroup]="myForm">
           <label for="quantity">Količina: </label>

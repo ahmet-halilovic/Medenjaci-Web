@@ -3,6 +3,10 @@
   padding: 0 35px;
 }
 
+.active {
+  color: var(--secondary-color) !important;
+}
+
 .navbar-brand img {
   width: 90px;
   height: 100px;
@@ -34,7 +38,7 @@
   font-weight: 300;
 }
 
-#contact-info span b{
+#contact-info span b {
   font-weight: 600;
 }
 

@@ -3,7 +3,7 @@
   <div class="sidebar">
     <nav aria-label="breadcrumb" class="mt-1 ml-1 mr-auto">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Početna</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['']">Početna</a></li>
         <li class="breadcrumb-item active" aria-current="page">Prodavnica</li>
       </ol>
     </nav>
@@ -25,7 +25,11 @@
         <input class="form-control" type="search" placeholder="Pretraži proizvode..." aria-label="Search">
       </form>
     </div>
-    <div class="products"></div>
+    <div class="products d-flex flex-row flex-wrap justify-content-start">
+      <div *ngFor="let product of products">
+        <app-product [product]="product"></app-product>
+      </div>
+    </div>
   </div>
 
 </div>
