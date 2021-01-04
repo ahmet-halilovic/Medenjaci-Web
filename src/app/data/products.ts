@@ -9,5 +9,20 @@ export const PRODUCTS: Product[] = [
     description: 'Domaci livadski med.',
     manual: 'Koristiti svako jutro uz caj.',
     category: 'Med'
+  },
+  {
+    id: 2,
+    name: 'Bagremov med',
+    price: 1199,
+    picture: 'https://lh3.googleusercontent.com/proxy/61G2Vp6VDDnVJFqAQeqcujRkgxn1jd8IIYl0dSOb8TNGBQpRPG66AxlUHPxuh3gkELgye_A4dhixRBHkOKUyatJfC-ET5Ma8_ZbWEznd7fmdoSmV-M4EXUFaHdPZ',
+    description: 'Bagremov med je monofloralni med koji potiče od nektara cveta bagrema.',
+    manual: 'Normalne dnevne količine meda su:\n' +
+      'za odrasle: 60-100g, podeljene u 3-4 doze u toku dana;\n' +
+      'za decu: 30-50g, 3-4 puta u toku dana.\n' +
+      '\n' +
+      'Med i preparati sa medom koriste se tako što se što duže drže u ustima dok se ne rastope. Ili mogu da se rastope u mlakoj vodi i potom popiju.\n' +
+      '\n' +
+      'Potrebno je da se posebno istakne da je najgori način uzimanja meda, kao i preparata sa medom, kada se med proguta i zatim popije hladna voda.',
+    category: 'Med'
   }
 ];

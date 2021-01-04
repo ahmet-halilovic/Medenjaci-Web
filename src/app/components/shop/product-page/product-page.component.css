@@ -20,9 +20,6 @@
   font-weight: 300;
 }
 
-.active {
-  color: var(--secondary-color);
-}
 
 .content-wrapper {
   width: 75%;
@@ -35,10 +32,19 @@
 
 .categories a {
   text-transform: uppercase;
+  text-decoration: none;
   width: 100%;
   border-bottom: 1px solid gray;
   text-align: center;
   padding: 5px 10px;
+}
+
+.active {
+  color: var(--secondary-color);
+}
+
+.inactive {
+  color: black;
 }
 
 .categories a:hover {

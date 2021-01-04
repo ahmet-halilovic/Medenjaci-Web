@@ -9,24 +9,30 @@
     </nav>
 
     <div class="categories d-flex flex-column align-items-center ml-5 mt-5">
-      <a>Svi proizvodi</a>
-      <a>Med</a>
-      <a>Propolis</a>
-      <a>Mešavine sa medom</a>
-      <a>Polen</a>
-      <a>Jabukovo sirće</a>
-      <a>Matični mleč</a>
+      <a [ngClass]="filter === 'Svi proizvodi' ? 'active' : 'inactive'" (click)="setFilter('Svi proizvodi')">Svi
+        proizvodi</a>
+      <a [ngClass]="filter === 'Med' ? 'active' : 'inactive'" (click)="setFilter('Med')">Med</a>
+      <a [ngClass]="filter === 'Propolis' ? 'active' : 'inactive'" (click)="setFilter('Propolis')">Propolis</a>
+      <a [ngClass]="filter === 'Mešavine sa medom' ? 'active' : 'inactive'" (click)="setFilter('Mešavine sa medom')">Mešavine
+        sa
+        medom</a>
+      <a [ngClass]="filter === 'Polen' ? 'active' : 'inactive'" (click)="setFilter('Polen')">Polen</a>
+      <a [ngClass]="filter === 'Jabukovo sirće' ? 'active' : 'inactive'" (click)="setFilter('Jabukovo sirće')">Jabukovo
+        sirće</a>
+      <a [ngClass]="filter === 'Matični mleč' ? 'active' : 'inactive'" (click)="setFilter('Matični mleč')">Matični
+        mleč</a>
     </div>
   </div>
 
   <div class="content-wrapper d-flex flex-column mt-1 mb-2 mr-1">
     <div class="search-bar">
       <form class="ml-auto mr-1">
-        <input class="form-control" type="search" placeholder="Pretraži proizvode..." aria-label="Search">
+        <input class="form-control" type="search" placeholder="Pretraži proizvode..." aria-label="Search"
+               [(ngModel)]="searchCriteria" (input)="productSearch()" name="search-box">
       </form>
     </div>
     <div class="products d-flex flex-row flex-wrap justify-content-start">
-      <div *ngFor="let product of products">
+      <div *ngFor="let product of filteredProducts">
         <app-product [product]="product"></app-product>
       </div>
     </div>
