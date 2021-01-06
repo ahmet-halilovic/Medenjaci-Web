@@ -23,7 +23,7 @@
         <h4>{{product.name}}</h4>
         <span class="availability">Na stanju</span>
       </div>
-      <p>{{product.price}} RSD</p>
+      <p>{{product.price | pointReplacer}} RSD</p>
       <hr>
       <span>{{product.description}}</span>
       <div class="quantityContainer mt-2">
@@ -43,7 +43,7 @@
       </div>
       <br>
       <div class="d-flex flex-row justify-content-center mb-1">
-        <button>Dodaj u korpu</button>
+        <button (click)="addToCart()">Dodaj u korpu</button>
       </div>
     </div>
   </div>
