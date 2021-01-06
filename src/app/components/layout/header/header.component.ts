@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {faPhone, faShoppingBag, faUserAlt} from '@fortawesome/free-solid-svg-icons';
-import {NavigationService} from '../../../services/navigation.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,24 +14,17 @@ export class HeaderComponent implements OnInit {
 
   activePage: string = 'home';
 
-  constructor(private navigationService: NavigationService) {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
-    this.getActivePage();
-  }
-
-  getActivePage() {
-    this.navigationService.getActivePage().subscribe((res) => {
-        this.activePage = res;
-      }
-    );
   }
 
   setActivePage(page: string) {
-    this.navigationService.setActivePage(page).subscribe((res) => {
-      this.activePage = res;
-    });
+    this.activePage = page;
   }
 
+  navigateToCart() {
+    this.router.navigate(['cart']);
+  }
 }

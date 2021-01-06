@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {faDollarSign, faPhone, faTruck} from '@fortawesome/free-solid-svg-icons';
 import {Router} from '@angular/router';
-import {NavigationService} from '../../../services/navigation.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +12,7 @@ export class HomeComponent implements OnInit {
   faPhone = faPhone;
   faPayment = faDollarSign;
 
-  constructor(private router: Router, private navigationService: NavigationService) {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
@@ -21,7 +20,6 @@ export class HomeComponent implements OnInit {
 
   navigateToShop() {
     this.router.navigate(['shop']);
-    this.navigationService.setActivePage('shop');
   }
 
 }

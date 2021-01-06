@@ -12,6 +12,7 @@ import {ProductPageComponent} from './components/shop/product-page/product-page.
 import {ProductComponent} from './components/shop/product/product.component';
 import {ProductDetailsComponent} from './components/shop/product-details/product-details.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FullPageCartComponent} from './components/shop/full-page-cart/full-page-cart.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ProductPageComponent,
     ProductComponent,
     ProductDetailsComponent,
+    FullPageCartComponent,
   ],
   imports: [
     BrowserModule,

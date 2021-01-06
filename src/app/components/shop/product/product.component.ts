@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  @Input() product: Product | undefined;
+  @Input() product: Product = new Product(0, '', 0, '', '', '', '');
 
   constructor(private router: Router) {
   }

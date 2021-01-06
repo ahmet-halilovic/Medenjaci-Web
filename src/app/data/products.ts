@@ -5,7 +5,7 @@ export const PRODUCTS: Product[] = [
     id: 1,
     name: 'Livadski med',
     price: 999,
-    picture: 'https://lh3.googleusercontent.com/proxy/JyTEdxdVsjhkugG7TkJLcVI6iLmvORAcvYlxKs0hpUu7ASxpLtNf6WxO2CogbyfnS7wU6_AITNSTv7eolTnraLLaU0pqhRILWk2fQt6ul6c9ISAxGfRwTzyuQj4r',
+    picture: 'https://lh3.googleusercontent.com/proxy/aMsZs3VzCUF2aK8_x9c77sFQ9dEtf7B50NYYsyzV9McT7n5RiKwblYTC8u641-0jKXKAo_GEjm80UvyiED2IyL4HtQaNN7yQsyAD6TZLox4MWfCOEH_HiAxHmYJg',
     description: 'Domaci livadski med.',
     manual: 'Koristiti svako jutro uz caj.',
     category: 'Med'
@@ -14,7 +14,7 @@ export const PRODUCTS: Product[] = [
     id: 2,
     name: 'Bagremov med',
     price: 1199,
-    picture: 'https://lh3.googleusercontent.com/proxy/61G2Vp6VDDnVJFqAQeqcujRkgxn1jd8IIYl0dSOb8TNGBQpRPG66AxlUHPxuh3gkELgye_A4dhixRBHkOKUyatJfC-ET5Ma8_ZbWEznd7fmdoSmV-M4EXUFaHdPZ',
+    picture: 'https://lh3.googleusercontent.com/proxy/aH81M4p2TAqaTKJLrXVmI60ndEksmfyUVvJ1aTMsF5uwV-FGW1DPplzHS8G6oa1HBRHjSrNXzrq0pXQenLYZoWQ9j8heNwPLF_DVdOQ5peKpKGGcKvGuYqJ9P3Bf',
     description: 'Bagremov med je monofloralni med koji potiče od nektara cveta bagrema.',
     manual: 'Normalne dnevne količine meda su:\n' +
       'za odrasle: 60-100g, podeljene u 3-4 doze u toku dana;\n' +
