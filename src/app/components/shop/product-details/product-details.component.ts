@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../../../models/Product';
 import {ProductService} from '../../../services/product.service';
+import {ChosenProduct} from '../../../models/ChosenProduct';
+import {CartService} from '../../../services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -16,7 +18,8 @@ export class ProductDetailsComponent implements OnInit {
   productId: number = 0;
   product: Product = new Product(0, '', 0, '', '', '', '');
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private productService: ProductService) {
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private productService: ProductService,
+              private cartService: CartService) {
     this.myForm = formBuilder.group({
       quantity: ['1', [Validators.min(1), Validators.max(5)]]
     });
@@ -42,6 +45,12 @@ export class ProductDetailsComponent implements OnInit {
         this.product = res;
       },
     );
+  }
+
+  addToCart() {
+    const chosenProduct = new ChosenProduct(this.product, parseInt(this.f.quantity.value));
+
+    this.cartService.addToCart(chosenProduct);
   }
 
 }

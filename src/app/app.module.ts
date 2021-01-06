@@ -13,6 +13,8 @@ import {ProductComponent} from './components/shop/product/product.component';
 import {ProductDetailsComponent} from './components/shop/product-details/product-details.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FullPageCartComponent} from './components/shop/full-page-cart/full-page-cart.component';
+import {PointReplacerPipe} from './components/overwrittenComponents/point-replacer.pipe';
+import {CartHoverComponent} from './components/shop/cart-hover/cart-hover.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import {FullPageCartComponent} from './components/shop/full-page-cart/full-page-
     ProductComponent,
     ProductDetailsComponent,
     FullPageCartComponent,
+    PointReplacerPipe,
+    CartHoverComponent,
   ],
   imports: [
     BrowserModule,

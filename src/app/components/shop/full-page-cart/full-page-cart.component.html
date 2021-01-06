@@ -1,1 +1,71 @@
-<p>full-page-cart works!</p>
+<div class="wrapper">
+  <h3 *ngIf="products.length > 0" class="mb-4">Korpa</h3>
+
+  <div
+    *ngIf="products.length === 0"
+    class="d-flex flex-column align-items-center no-products-container my-auto"
+  >
+    <div class="d-flex flex-row">
+      <div
+        class="icon-container d-flex justify-content-center align-items-center"
+      >
+        <fa-icon [icon]="faCart"></fa-icon>
+      </div>
+      <div
+        class="number-container d-flex justify-content-center align-items-center"
+      >
+        <span>0</span>
+      </div>
+    </div>
+    <div
+      class="text-container d-flex flex-column justify-content-center align-items-center"
+    >
+      <h2>Korpa je prazna</h2>
+      <p>
+        Nema artikala u Vašoj korpi.<br/>
+        <span>Kliknite <a [routerLink]="['/shop']">ovde</a> da
+          nastavite sa kupovinom.</span
+        >
+      </p>
+    </div>
+  </div>
+
+  <div class="products-container" *ngIf="products.length > 0">
+    <table>
+      <tr class="header-row">
+        <th style="width: 10%"></th>
+        <th style="width: 45%">Naziv proizvoda</th>
+        <th style="width: 18%;">Pojedinačna cena</th>
+        <th style="width: 12%">Količina</th>
+        <th style="width: 10%">Ukupno</th>
+        <th style="width: 5%"></th>
+      </tr>
+      <tr *ngFor="let product of products" class="product">
+        <td class="d-flex flex-row justify-content-center"><img src="{{ product.picture }}" alt=""/></td>
+        <td><span>{{product.name}}</span></td>
+        <td><span>{{product.price | pointReplacer}} RSD</span></td>
+        <td>
+          <input
+            type="number"
+            id="quantity"
+            min="0"
+            (change)="deleteOnChange($event, product)"
+            [(ngModel)]="product.quantity"
+          />
+        </td>
+        <td><span>{{product.quantity * product.price | pointReplacer}} RSD</span></td>
+        <td>
+          <fa-icon [icon]="faTrash" (click)="deleteProduct(product)"></fa-icon>
+        </td>
+      </tr>
+    </table>
+    <div class="footer-row d-flex flex-row justify-content-between">
+      <a id="empty-cart" (click)="emptyCart()">Isprazni korpu</a>
+      <a id="continue-shopping" [routerLink]="['/shop']">Nastavi kupovinu</a>
+    </div>
+    <div class="d-flex flex-column align-items-end mt-2">
+      <h5>Sve ukupno <span class="ml-5">{{getTotalPrice() | pointReplacer}} RSD</span></h5>
+      <button class="mr-4 mt-2">Dodaj u korpu</button>
+    </div>
+  </div>
+</div>

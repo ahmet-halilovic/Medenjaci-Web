@@ -78,6 +78,10 @@
   background-color: rgb(255, 235, 32);
 }
 
+.product-recap button:focus {
+  outline: none;
+}
+
 .product-recap .quantityContainer input {
   width: 100px;
   margin-left: 10px;

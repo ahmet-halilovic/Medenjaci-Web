@@ -1,24 +1,40 @@
 import {Component, OnInit} from '@angular/core';
-import {faShoppingCart, faTrash} from '@fortawesome/free-solid-svg-icons';
-import {CartService} from '../../../services/cart.service';
 import {ChosenProduct} from '../../../models/ChosenProduct';
+import {CartService} from '../../../services/cart.service';
+import {faShoppingCart, faTrash} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-full-page-cart',
-  templateUrl: './full-page-cart.component.html',
-  styleUrls: ['./full-page-cart.component.css']
+  selector: 'app-cart-hover',
+  templateUrl: './cart-hover.component.html',
+  styleUrls: ['./cart-hover.component.css']
 })
-export class FullPageCartComponent implements OnInit {
+export class CartHoverComponent implements OnInit {
   faCart = faShoppingCart;
   faTrash = faTrash;
 
   products: ChosenProduct[] = [];
+  recentlyAddedProducts: ChosenProduct[] = [];
 
   constructor(private cartService: CartService) {
   }
 
   ngOnInit(): void {
     this.products = this.cartService.getProducts();
+
+    this.recentlyAddedProductsHandler();
+  }
+
+  recentlyAddedProductsHandler() {
+    if (this.products.length < 3) {
+      this.recentlyAddedProducts = this.products;
+    } else if (this.products.length >= 1) {
+      this.recentlyAddedProducts = [];
+      this.recentlyAddedProducts.push(this.products[this.products.length - 1]);
+      this.recentlyAddedProducts.push(this.products[this.products.length - 2]);
+      this.recentlyAddedProducts.push(this.products[this.products.length - 3]);
+    } else {
+      this.recentlyAddedProducts = [];
+    }
   }
 
   getTotalQuantity() {
