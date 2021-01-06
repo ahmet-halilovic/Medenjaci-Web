@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit {
   faCart = faShoppingBag;
   faTelephone = faPhone;
 
+  cartActive: boolean = false;
+
   activePage: string = 'home';
 
   constructor(private router: Router) {
@@ -22,6 +24,10 @@ export class HeaderComponent implements OnInit {
 
   setActivePage(page: string) {
     this.activePage = page;
+  }
+
+  setCartActive(active: boolean) {
+    this.cartActive = active;
   }
 
   navigateToCart() {
