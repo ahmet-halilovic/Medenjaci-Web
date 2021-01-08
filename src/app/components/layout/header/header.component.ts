@@ -30,6 +30,10 @@ export class HeaderComponent implements OnInit {
     this.cartActive = active;
   }
 
+  navigateToLoginRegister() {
+    this.router.navigate(['login-register']);
+  }
+
   navigateToCart() {
     this.router.navigate(['cart']);
   }

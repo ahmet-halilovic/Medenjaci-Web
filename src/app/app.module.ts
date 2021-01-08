@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FullPageCartComponent} from './components/shop/full-page-cart/full-page-cart.component';
 import {PointReplacerPipe} from './components/overwrittenComponents/point-replacer.pipe';
 import {CartHoverComponent} from './components/shop/cart-hover/cart-hover.component';
+import { LoginRegisterComponent } from './components/user/login-register/login-register.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {CartHoverComponent} from './components/shop/cart-hover/cart-hover.compon
     FullPageCartComponent,
     PointReplacerPipe,
     CartHoverComponent,
+    LoginRegisterComponent,
   ],
   imports: [
     BrowserModule,

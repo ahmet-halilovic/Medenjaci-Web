@@ -1,0 +1,246 @@
+<div class="wrapper d-flex flex-row">
+  <div class="login d-flex flex-column align-items-center border-right">
+    <div class="login-header">
+      <h4>Prijavite se</h4>
+      <hr>
+      <span>Prijavite se kako biste imali puni pristup funkcionalnostima web-prodavnice!</span>
+    </div>
+
+    <form [formGroup]="loginForm" (submit)="login()">
+      <div class="form-group">
+        <span class="form-control-title">Korisničko ime</span>
+        <input
+          type="text"
+          [ngClass]="
+                username.invalid && username.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+          formControlName="username"
+        />
+        <div *ngIf="username.errors && username.touched" class="error-container mt-1">
+          <span *ngIf="username.errors.required">
+                Unesite korisničko ime
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <span class="form-control-title">Lozinka</span>
+        <input
+          type="password"
+          [ngClass]="
+                password.invalid && password.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+          formControlName="password"
+        />
+        <div *ngIf="password.errors && password.touched" class="error-container mt-1">
+          <span *ngIf="password.errors.required">Unesite lozinku</span>
+          <span *ngIf="password.getError('incorrect')"
+          >Lozinka nije tačna</span
+          >
+        </div>
+      </div>
+
+      <div class="d-flex flex-row justify-content-center">
+        <button [disabled]="loginForm.invalid">Prijava</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="register d-flex flex-column align-items-center">
+    <div class="register-header mr-auto">
+      <h4>Registrujte se</h4>
+      <hr>
+      <span>Kreirajte novi nalog i postanite deo naše zajednice!</span>
+    </div>
+
+    <form [formGroup]="registerForm" (submit)="login()">
+      <div class="d-flex flex-row justify-content-center mx-3">
+        <div class="form-group">
+          <span class="form-control-title">Ime</span>
+          <input
+            type="text"
+            [ngClass]="
+                firstName.invalid && firstName.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="firstName"
+          />
+          <div *ngIf="firstName.errors && firstName.touched" class="error-container mt-1">
+          <span *ngIf="firstName.errors.required">
+                Unesite ime
+          </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="form-control-title">Prezime</span>
+          <input
+            type="text"
+            [ngClass]="
+                lastName.invalid && lastName.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="lastName"
+          />
+          <div *ngIf="lastName.errors && lastName.touched" class="error-container mt-1">
+          <span *ngIf="lastName.errors.required">
+                Unesite prezime
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row justify-content-center mx-3">
+        <div class="form-group">
+          <span class="form-control-title">Korisničko ime</span>
+          <input
+            type="text"
+            [ngClass]="
+                registerUsername.invalid && registerUsername.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="registerUsername"
+          />
+          <div *ngIf="registerUsername.errors && registerUsername.touched" class="error-container mt-1">
+          <span *ngIf="registerUsername.errors.required">
+                Unesite korisničko ime
+          </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="form-control-title">Email adresa</span>
+          <input
+            type="text"
+            [ngClass]="
+                email.invalid && email.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="email"
+          />
+          <div *ngIf="email.errors && email.touched" class="error-container mt-1">
+              <span *ngIf="email.errors.required">
+                Unesite email adresu
+              </span>
+            <span *ngIf="email.errors.email">
+                Email mora biti validna email adresa
+              </span>
+            <span *ngIf="email.getError('incorrect')">
+                Email koji ste uneli nije tačan
+              </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row justify-content-center mx-3" [formGroup]="passwordGroup">
+        <div class="form-group">
+          <span class="form-control-title">Lozinka</span>
+          <input
+            type="password"
+            [ngClass]="
+                  (registerPassword.errors && registerPassword.touched) ||
+                  (passwordGroup.errors && confirmPassword.touched)
+                    ? 'form-control-invalid'
+                  : 'form-control-valid'
+                "
+            formControlName="registerPassword"
+          />
+          <div *ngIf="confirmPassword.errors && confirmPassword.touched" class="mt-1">
+            <span *ngIf="confirmPassword.errors.required">Unesite lozinku</span>
+            <span *ngIf="confirmPassword.errors.minlength"
+            >Lozinka mora imati minimum 6 karaktera</span
+            ><span *ngIf="confirmPassword.errors.pattern"
+          >Lozinka sme imati samo velika slova, mala slova i
+                  brojeve.</span
+          >
+          </div>
+        </div>
+        <div class="form-group">
+          <span class="form-control-title">Potvrda lozinke</span>
+          <input
+            type="password"
+            [ngClass]="
+                  passwordGroup.errors && confirmPassword.touched
+                    ? 'form-control-invalid'
+                  : 'form-control-valid'
+                "
+            formControlName="confirmPassword"
+          />
+          <div
+            *ngIf="passwordGroup.errors && confirmPassword.touched"
+            class="mt-1"
+          >
+            <span *ngIf="passwordGroup.errors">Lozinke nisu identične</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row justify-content-center mx-3">
+        <div class="form-group">
+          <span class="form-control-title">Ulica</span>
+          <input
+            type="text"
+            [ngClass]="
+                street.invalid && street.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="street"
+          />
+          <div *ngIf="street.errors && street.touched" class="error-container mt-1">
+          <span *ngIf="street.errors.required">
+                Unesite ulicu
+          </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="form-control-title">Mesto</span>
+          <input
+            type="text"
+            [ngClass]="
+                city.invalid && city.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="city"
+          />
+          <div *ngIf="city.errors && city.touched" class="error-container mt-1">
+          <span *ngIf="city.errors.required">
+                Unesite mesto
+          </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="form-control-title">Telefon</span>
+          <input
+            type="text"
+            [ngClass]="
+                phone.invalid && phone.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="phone"
+          />
+          <div *ngIf="phone.errors && phone.touched" class="error-container mt-1">
+          <span *ngIf="phone.errors.required">
+                Unesite telefon
+          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row justify-content-center pt-3">
+        <button [disabled]="registerForm.invalid">Registracija</button>
+      </div>
+    </form>
+  </div>
+</div>

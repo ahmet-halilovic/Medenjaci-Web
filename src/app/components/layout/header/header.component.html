@@ -22,7 +22,7 @@
 
     <ul class="ml-auto navbar-nav" id="right-ul">
       <li class="mr-4">
-        <fa-icon [icon]="faUser"></fa-icon>
+        <fa-icon id="user" [icon]="faUser" (click)="navigateToLoginRegister()"></fa-icon>
       </li>
       <li class="mr-5" (mouseenter)="setCartActive(true)"
           (mouseleave)="setCartActive(false)">

@@ -51,6 +51,6 @@ fa-icon {
   font-size: 42px;
 }
 
-#cart:hover {
+#user:hover, #cart:hover {
   cursor: pointer;
 }
