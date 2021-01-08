@@ -124,6 +124,10 @@ button {
   margin: 0 auto;
 }
 
+button:disabled {
+  cursor: not-allowed;
+}
+
 button:hover {
   background-color: rgb(255, 235, 32);
 }
