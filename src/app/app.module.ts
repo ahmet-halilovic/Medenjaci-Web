@@ -16,6 +16,7 @@ import {FullPageCartComponent} from './components/shop/full-page-cart/full-page-
 import {PointReplacerPipe} from './components/overwrittenComponents/point-replacer.pipe';
 import {CartHoverComponent} from './components/shop/cart-hover/cart-hover.component';
 import { LoginRegisterComponent } from './components/user/login-register/login-register.component';
+import { MyProfileComponent } from './components/user/my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LoginRegisterComponent } from './components/user/login-register/login-r
     PointReplacerPipe,
     CartHoverComponent,
     LoginRegisterComponent,
+    MyProfileComponent,
   ],
   imports: [
     BrowserModule,

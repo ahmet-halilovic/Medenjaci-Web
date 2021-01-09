@@ -128,6 +128,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-button:hover {
+button:enabled:hover {
   background-color: rgb(255, 235, 32);
 }
