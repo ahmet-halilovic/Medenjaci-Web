@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../../services/user.service';
+import {User} from '../../../models/User';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-profile',
@@ -8,13 +11,14 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class MyProfileComponent implements OnInit {
   activeContent: string = 'Lični podaci';
+  user: User = new User('', '', '', '', '', '', '', '');
 
   // @ts-ignore
   infoForm: FormGroup;
   // @ts-ignore
   changePasswordForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -33,6 +37,9 @@ export class MyProfileComponent implements OnInit {
         confirmNewPassword: ['', [Validators.required]]
       }, {validator: this.passwordMatchValidator}),
     });
+
+    this.getLoggedUser();
+
   }
 
   passwordMatchValidator(formGroup: FormGroup) {
@@ -79,6 +86,46 @@ export class MyProfileComponent implements OnInit {
 
   setActiveContent(content: string) {
     this.activeContent = content;
+  }
+
+  getLoggedUser() {
+    this.userService.getLoggedUser().subscribe((res) => {
+      this.user = res;
+      this.fillForm();
+    });
+  }
+
+  fillForm() {
+    this.firstName?.setValue(this.user.firstName);
+    this.lastName?.setValue(this.user.lastName);
+    this.street?.setValue(this.user.street);
+    this.city?.setValue(this.user.city);
+    this.phone?.setValue(this.user.phone);
+  }
+
+  changePersonalInfo() {
+    const updatedUser = new User(this.user.username, this.user.password, this.user.email, this.firstName?.value, this.lastName?.value, this.street?.value, this.city?.value, this.phone?.value);
+
+    this.userService.changePersonalInfo(updatedUser).subscribe((res) => {
+      this.user = res;
+    });
+  }
+
+  changePassword() {
+    const updatedUser = new User(this.user.username, this.currentPassword?.value, this.user.email, this.user.firstName, this.user.lastName, this.user.street, this.user.city, this.user.phone);
+
+    this.userService.changePassword(updatedUser, this.newPassword?.value).subscribe((res) => {
+      if (res == undefined) {
+        this.changePasswordForm.controls['currentPassword'].setErrors({incorrect: true});
+      } else {
+        this.user = res;
+      }
+    });
+  }
+
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['']);
   }
 
 }

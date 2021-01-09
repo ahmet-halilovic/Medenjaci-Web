@@ -7,7 +7,7 @@
       </a>
       <a [ngClass]="activeContent === 'Narudžbine' ? 'active' : 'inactive'"
          (click)="setActiveContent('Narudžbine')">Narudžbine</a>
-      <a>Odjava</a>
+      <a (click)="logout()">Odjava</a>
     </div>
   </div>
 
@@ -174,7 +174,7 @@
           </div>
         </div>
         <div class="d-flex flex-row justify-content-center">
-          <button [disabled]="infoForm.invalid">Sačuvaj izmene</button>
+          <button [disabled]="changePasswordForm.invalid" (click)="changePassword()">Sačuvaj izmene</button>
         </div>
       </form>
     </div>
