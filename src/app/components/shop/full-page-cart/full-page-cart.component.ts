@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {faShoppingCart, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {CartService} from '../../../services/cart.service';
 import {ChosenProduct} from '../../../models/ChosenProduct';
+import {OrderService} from '../../../services/order.service';
+import {UserService} from '../../../services/user.service';
+import {Router} from '@angular/router';
+import {Order} from '../../../models/Order';
 
 @Component({
   selector: 'app-full-page-cart',
@@ -14,7 +18,7 @@ export class FullPageCartComponent implements OnInit {
 
   products: ChosenProduct[] = [];
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private orderService: OrderService, private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -51,5 +55,30 @@ export class FullPageCartComponent implements OnInit {
 
   emptyCart() {
     this.products = this.cartService.clearCart();
+  }
+
+  createOrder() {
+    let result = this.userService.getLoggedUser();
+
+    if (result.username === '') {
+      this.router.navigate(['login-register']);
+    } else {
+      const newOrder = new Order(
+        Math.floor(Math.random() * 1000),
+        parseInt(this.getTotalPrice()),
+        this.products,
+        'Na čekanju',
+        new Date(),
+        result.firstName,
+        result.lastName,
+        result.street,
+        result.city,
+        result.phone,
+        result.username);
+
+      this.orderService.createOrder(newOrder).subscribe((res) => {
+
+      });
+    }
   }
 }

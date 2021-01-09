@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div class="content d-flex flex-row">
+  <div class="content d-flex flex-row" *ngIf="activeContent === 'Lični podaci'">
     <div class="personal-info d-flex flex-column align-items-center border-right">
       <h4>Promena ličnih podataka</h4>
       <form [formGroup]="infoForm">
@@ -106,7 +106,7 @@
         </div>
 
         <div class="d-flex flex-row justify-content-center">
-          <button [disabled]="infoForm.invalid">Sačuvaj izmene</button>
+          <button [disabled]="infoForm.invalid" (click)="changePersonalInfo()">Sačuvaj izmene</button>
         </div>
       </form>
     </div>
@@ -178,5 +178,27 @@
         </div>
       </form>
     </div>
+  </div>
+
+  <div class="content" *ngIf="activeContent === 'Narudžbine'">
+    <h4 class="ml-4" *ngIf="!showOrder">Moje narudžbine</h4>
+    <table border="1" *ngIf="!showOrder">
+      <tr class="header-row">
+        <th style="width: 10%">ID</th>
+        <th style="width: 25%">Datum</th>
+        <th style="width: 25%;">Ukupna cena</th>
+        <th style="width: 20%">Status</th>
+        <th style="width: 15%">Akcije</th>
+      </tr>
+      <tr *ngFor="let order of orders" class="order">
+        <td><span>#{{order.id}}</span></td>
+        <td><span>{{reformatDate(order.date)}}</span></td>
+        <td><span>{{order.totalPrice | pointReplacer}} RSD</span></td>
+        <td><span>{{order.status}}</span></td>
+        <td style="text-align: center"><a (click)="setShowOrder(true, order)">Detaljnije</a></td>
+      </tr>
+    </table>
+
+    <app-show-order *ngIf="showOrder" [order]="chosenOrder"></app-show-order>
   </div>
 </div>

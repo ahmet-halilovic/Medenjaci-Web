@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/User';
 import {Router} from '@angular/router';
+import {Order} from '../../../models/Order';
+import {OrderService} from '../../../services/order.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -10,15 +12,18 @@ import {Router} from '@angular/router';
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
-  activeContent: string = 'Lični podaci';
+  activeContent: string = 'Narudžbine';
   user: User = new User('', '', '', '', '', '', '', '');
-
+  orders: Order[] = [];
   // @ts-ignore
   infoForm: FormGroup;
   // @ts-ignore
   changePasswordForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
+  showOrder: boolean = false;
+  chosenOrder: any;
+
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService, private orderService: OrderService) {
   }
 
   ngOnInit(): void {
@@ -39,7 +44,7 @@ export class MyProfileComponent implements OnInit {
     });
 
     this.getLoggedUser();
-
+    this.getOrders();
   }
 
   passwordMatchValidator(formGroup: FormGroup) {
@@ -88,11 +93,59 @@ export class MyProfileComponent implements OnInit {
     this.activeContent = content;
   }
 
+  reformatDate(date: Date) {
+    let month = '';
+
+    switch (date.getMonth()) {
+      case 0:
+        month = 'Januar';
+        break;
+      case 1:
+        month = 'Februar';
+        break;
+      case 2:
+        month = 'Mart';
+        break;
+      case 3:
+        month = 'April';
+        break;
+      case 4:
+        month = 'Maj';
+        break;
+      case 5:
+        month = 'Jun';
+        break;
+      case 6:
+        month = 'Jul';
+        break;
+      case 7:
+        month = 'Avgust';
+        break;
+      case 8:
+        month = 'Septembar';
+        break;
+      case 9:
+        month = 'Oktobar';
+        break;
+      case 10:
+        month = 'Novembar';
+        break;
+      case 11:
+        month = 'Decembar';
+        break;
+      default:
+        month = '';
+        break;
+    }
+
+    return `${date.getDate()}. ${month} ${date.getFullYear()}.`;
+  }
+
   getLoggedUser() {
-    this.userService.getLoggedUser().subscribe((res) => {
-      this.user = res;
-      this.fillForm();
-    });
+    let result = this.userService.getLoggedUser();
+
+    this.user = result;
+    this.fillForm();
   }
 
   fillForm() {
@@ -121,6 +174,19 @@ export class MyProfileComponent implements OnInit {
         this.user = res;
       }
     });
+  }
+
+  getOrders() {
+    this.orderService.listUsersOrders(this.user.username).subscribe(
+      (res) => {
+        this.orders = res;
+      }
+    );
+  }
+
+  setShowOrder(active: boolean, order: any) {
+    this.showOrder = active;
+    this.chosenOrder = order;
   }
 
   logout() {

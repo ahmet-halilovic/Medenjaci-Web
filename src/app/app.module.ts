@@ -17,6 +17,7 @@ import {PointReplacerPipe} from './components/overwrittenComponents/point-replac
 import {CartHoverComponent} from './components/shop/cart-hover/cart-hover.component';
 import { LoginRegisterComponent } from './components/user/login-register/login-register.component';
 import { MyProfileComponent } from './components/user/my-profile/my-profile.component';
+import { ShowOrderComponent } from './components/user/show-order/show-order.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MyProfileComponent } from './components/user/my-profile/my-profile.comp
     CartHoverComponent,
     LoginRegisterComponent,
     MyProfileComponent,
+    ShowOrderComponent,
   ],
   imports: [
     BrowserModule,

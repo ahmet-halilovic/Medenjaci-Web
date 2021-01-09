@@ -13,8 +13,8 @@ export class UserService {
   constructor() {
   }
 
-  getLoggedUser(): Observable<User> {
-    return of(this.loggedUser);
+  getLoggedUser() {
+    return this.loggedUser;
   }
 
   checkIfLoggedIn(): Observable<boolean> {
@@ -33,6 +33,7 @@ export class UserService {
   }
 
   logout() {
+    this.loggedUser = new User('', '', '', '', '', '', '', '');
     localStorage.removeItem('username');
   }
 
@@ -48,6 +49,7 @@ export class UserService {
     }
 
     localStorage.setItem('username', username);
+    this.loggedUser = byUsername;
 
     return of('Success');
   }

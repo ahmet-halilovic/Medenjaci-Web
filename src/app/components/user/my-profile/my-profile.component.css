@@ -99,3 +99,32 @@ button:disabled {
 button:enabled:hover {
   background-color: rgb(255, 235, 32);
 }
+
+table {
+  width: 100%;
+}
+
+.header-row {
+  background-color: var(--secondary-color);
+}
+
+.header-row th {
+  padding: 10px 15px;
+}
+
+.order td {
+  padding: 15px 10px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.order a {
+  font-weight: 300;
+  text-decoration: underline;
+}
+
+.order a:hover {
+  cursor: pointer;
+  color: rgba(33, 37, 41, 0.8);
+}
+
