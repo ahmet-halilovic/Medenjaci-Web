@@ -8,8 +8,33 @@ import {User} from '../models/User';
 })
 export class UserService {
   users = USERS;
+  loggedUser = new User('', '', '', '', '', '', '', '');
 
   constructor() {
+  }
+
+  getLoggedUser() {
+    return this.loggedUser;
+  }
+
+  checkIfLoggedIn(): Observable<boolean> {
+    const checkToken = localStorage.getItem('username');
+
+    if (checkToken) {
+      const byUsername = this.users.find(u => u.username === checkToken);
+
+      // @ts-ignore
+      this.loggedUser = byUsername;
+
+      return of(true);
+    }
+
+    return of(false);
+  }
+
+  logout() {
+    this.loggedUser = new User('', '', '', '', '', '', '', '');
+    localStorage.removeItem('username');
   }
 
   login(username: string, password: string, rememberMe: boolean): Observable<string> {
@@ -22,6 +47,9 @@ export class UserService {
     if (byUsername.password !== password) {
       return of('Wrong password');
     }
+
+    localStorage.setItem('username', username);
+    this.loggedUser = byUsername;
 
     return of('Success');
   }
@@ -50,5 +78,39 @@ export class UserService {
 
     this.users.push(new User(user.username, user.password, user.email, user.firstName, user.lastName, user.street, user.city, user.phone));
     return of(['Success']);
+  }
+
+  changePersonalInfo(user: User): Observable<User> {
+    let result;
+
+    this.users.forEach((u) => {
+      if (u.username === user.username) {
+        console.log('da');
+        u.firstName = user.firstName;
+        u.lastName = user.lastName;
+        u.street = user.street;
+        u.city = user.city;
+        u.phone = user.phone;
+
+        result = u;
+      }
+    });
+    // @ts-ignore
+    return of(result);
+  }
+
+  changePassword(user: User, newPassword: string): Observable<User> {
+    let result;
+
+    this.users.forEach((u) => {
+      if (u.username === user.username && u.password === user.password) {
+        u.password = newPassword;
+
+        result = u;
+      }
+    });
+
+    // @ts-ignore
+    return of(result);
   }
 }

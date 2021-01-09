@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {faPhone, faShoppingBag, faUserAlt} from '@fortawesome/free-solid-svg-icons';
 import {Router} from '@angular/router';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   activePage: string = 'home';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -31,7 +32,15 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToLoginRegister() {
-    this.router.navigate(['login-register']);
+    this.userService.checkIfLoggedIn().subscribe(
+      (res) => {
+        if (!res) {
+          this.router.navigate(['login-register']);
+        } else {
+          this.router.navigate(['my-profile']);
+        }
+      }
+    );
   }
 
   navigateToCart() {

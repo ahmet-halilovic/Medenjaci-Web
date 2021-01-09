@@ -1,0 +1,57 @@
+.wrapper {
+  width: 100%;
+
+  font-family: 'Quicksand';
+  padding: 25px 20px;
+}
+
+.contact-info {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  margin-top: 5%;
+}
+
+.header-row, .footer-row {
+  border: 1px solid black;
+  border-left: 0;
+  border-right: 0;
+}
+
+.footer-row {
+  border-bottom: 0;
+}
+
+.header-row th {
+  padding: 10px 0;
+}
+
+.product td {
+  padding: 5px 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.product fa-icon {
+  color: red;
+  font-size: 34px;
+}
+
+.product fa-icon:hover {
+  cursor: pointer;
+}
+
+.product td input {
+  width: 100px;
+}
+
+.product img {
+  width: 125px;
+  height: 110px;
+}
+
+.footer-row {
+  padding: 10px 25px;
+}

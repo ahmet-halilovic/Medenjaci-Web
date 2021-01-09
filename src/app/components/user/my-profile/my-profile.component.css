@@ -1,0 +1,130 @@
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+
+  font-family: 'Quicksand';
+  padding: 25px 20px;
+}
+
+.sidebar {
+  width: 25%;
+}
+
+.categories {
+  max-width: 350px;
+  border: 1px solid gray;
+}
+
+.categories a {
+  text-transform: uppercase;
+  text-decoration: none;
+  width: 100%;
+  border-bottom: 1px solid gray;
+  text-align: center;
+  padding: 5px 10px;
+}
+
+.active {
+  color: var(--secondary-color);
+}
+
+.inactive {
+  color: black;
+}
+
+.categories a:hover {
+  cursor: pointer;
+  color: var(--secondary-color);
+}
+
+.content {
+  width: 75%;
+}
+
+.personal-info, .change-password {
+  width: 50%;
+}
+
+.personal-info form, .change-password form {
+  width: 75%;
+  margin-top: 2%;
+}
+
+.personal-info form input {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.form-control-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.form-control-valid,
+.form-control-invalid {
+  display: block;
+  width: 100%;
+  height: 45px;
+  padding-left: 10px;
+  border: 1px solid rgb(206, 212, 218);
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-control-invalid {
+  border: 1px solid red;
+}
+
+.error-container span {
+  color: #d9534f;
+  margin-top: 4px;
+  margin-bottom: 0px;
+}
+
+button {
+  background-color: var(--secondary-color);
+  padding: 15px 40px;
+  color: var(--footer-color);
+
+  border: 0px;
+  border-radius: 35px;
+  margin: 0 auto;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:enabled:hover {
+  background-color: rgb(255, 235, 32);
+}
+
+table {
+  width: 100%;
+}
+
+.header-row {
+  background-color: var(--secondary-color);
+}
+
+.header-row th {
+  padding: 10px 15px;
+}
+
+.order td {
+  padding: 15px 10px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.order a {
+  font-weight: 300;
+  text-decoration: underline;
+}
+
+.order a:hover {
+  cursor: pointer;
+  color: rgba(33, 37, 41, 0.8);
+}
+

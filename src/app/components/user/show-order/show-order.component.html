@@ -1,0 +1,50 @@
+<div class="wrapper d-flex flex-column">
+  <div class="contact-info d-flex flex-row justify-content-around">
+    <div class="d-flex flex-column">
+      <span><b>Naručio/la:</b> {{order.firstName}} {{order.lastName}}</span>
+      <span><b>Status:</b> {{order.status}}</span>
+      <span><b>Datum:</b> {{reformatDate(order.date)}}</span>
+    </div>
+
+    <div class="d-flex flex-column">
+      <span><b>Adresa:</b> {{order.street}}, {{order.city}}</span>
+      <span><b>Kontakt:</b> {{order.phone}}</span>
+    </div>
+  </div>
+
+  <div class="products-container" *ngIf="order.products.length > 0">
+    <table>
+      <tr class="header-row">
+        <th style="width: 10%"></th>
+        <th style="width: 45%">Naziv proizvoda</th>
+        <th style="width: 18%;">Pojedinačna cena</th>
+        <th style="width: 12%">Količina</th>
+        <th style="width: 10%">Ukupno</th>
+        <th style="width: 5%"></th>
+      </tr>
+      <tr *ngFor="let product of order.products" class="product">
+        <td class="d-flex flex-row justify-content-center"><img src="{{ product.picture }}" alt=""/></td>
+        <td><span>{{product.name}}</span></td>
+        <td><span>{{product.price | pointReplacer}} RSD</span></td>
+        <td>
+          <input
+            type="number"
+            id="quantity"
+            min="0"
+            value="{{product.quantity}}"
+            disabled
+          />
+        </td>
+        <td><span>{{product.quantity * product.price | pointReplacer}} RSD</span></td>
+        <td>
+        </td>
+      </tr>
+    </table>
+    <div class="footer-row">
+    </div>
+    <div class="d-flex flex-column align-items-end mt-2">
+      <h5>Sve ukupno <span class="ml-5">{{getTotalPrice() | pointReplacer}} RSD</span></h5>
+    </div>
+  </div>
+
+</div>

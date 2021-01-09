@@ -1,0 +1,204 @@
+<div class="wrapper d-flex flex-row">
+  <div class="sidebar">
+    <div class="categories d-flex flex-column align-items-center ml-5 mt-5">
+      <a [ngClass]="activeContent === 'Lični podaci' ? 'active' : 'inactive'"
+         (click)="setActiveContent('Lični podaci')">
+        Lični podaci
+      </a>
+      <a [ngClass]="activeContent === 'Narudžbine' ? 'active' : 'inactive'"
+         (click)="setActiveContent('Narudžbine')">Narudžbine</a>
+      <a (click)="logout()">Odjava</a>
+    </div>
+  </div>
+
+  <div class="content d-flex flex-row" *ngIf="activeContent === 'Lični podaci'">
+    <div class="personal-info d-flex flex-column align-items-center border-right">
+      <h4>Promena ličnih podataka</h4>
+      <form [formGroup]="infoForm">
+        <div class="form-group">
+          <span class="form-control-title">Ime</span>
+          <input
+            type="text"
+            [ngClass]="
+                firstName.invalid && firstName.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="firstName"
+          />
+          <div *ngIf="firstName.errors && firstName.touched" class="error-container mt-1">
+          <span *ngIf="firstName.errors.required">
+                Unesite ime
+          </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="form-control-title">Prezime</span>
+          <input
+            type="text"
+            [ngClass]="
+                lastName.invalid && lastName.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="lastName"
+          />
+          <div *ngIf="lastName.errors && lastName.touched" class="error-container mt-1">
+          <span *ngIf="lastName.errors.required">
+                Unesite prezime
+          </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="form-control-title">Ulica</span>
+          <input
+            type="text"
+            [ngClass]="
+                street.invalid && street.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="street"
+          />
+          <div *ngIf="street.errors && street.touched" class="error-container mt-1">
+          <span *ngIf="street.errors.required">
+                Unesite ulicu
+          </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="form-control-title">Mesto</span>
+          <input
+            type="text"
+            [ngClass]="
+                city.invalid && city.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="city"
+          />
+          <div *ngIf="city.errors && city.touched" class="error-container mt-1">
+          <span *ngIf="city.errors.required">
+                Unesite mesto
+          </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <span class="form-control-title">Telefon</span>
+          <input
+            type="text"
+            [ngClass]="
+                phone.invalid && phone.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="phone"
+          />
+          <div *ngIf="phone.errors && phone.touched" class="error-container mt-1">
+          <span *ngIf="phone.errors.required">
+                Unesite telefon
+          </span>
+          </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-center">
+          <button [disabled]="infoForm.invalid" (click)="changePersonalInfo()">Sačuvaj izmene</button>
+        </div>
+      </form>
+    </div>
+    <div class="change-password d-flex flex-column align-items-center">
+      <h4>Promena lozinke</h4>
+      <form [formGroup]="changePasswordForm">
+        <div class="form-group">
+          <span class="form-control-title">Stara lozinka</span>
+          <input
+            type="password"
+            [ngClass]="
+                currentPassword.invalid && currentPassword.touched
+                  ? 'form-control-invalid'
+                  : 'form-control-valid'
+              "
+            formControlName="currentPassword"
+          />
+          <div *ngIf="currentPassword.errors && currentPassword.touched" class="error-container mt-1">
+            <span *ngIf="currentPassword.errors.required">Unesite lozinku</span>
+            <span *ngIf="currentPassword.getError('incorrect')">Lozinka nije tačna</span>
+          </div>
+        </div>
+
+        <div formGroupName="newPasswordGroup"
+             [formGroup]="newPasswordGroup">
+          <div class="form-group">
+            <span class="form-control-title">Lozinka</span>
+            <input
+              type="password"
+              [ngClass]="
+                  (newPassword.errors && newPassword.touched) ||
+                  (newPasswordGroup.errors && confirmNewPassword.touched)
+                    ? 'form-control-invalid'
+                  : 'form-control-valid'
+                "
+              formControlName="newPassword"
+            />
+            <div *ngIf="confirmNewPassword.errors && confirmNewPassword.touched" class="mt-1">
+              <span *ngIf="confirmNewPassword.errors.required">Unesite lozinku</span>
+              <span *ngIf="confirmNewPassword.errors.minlength"
+              >Lozinka mora imati minimum 6 karaktera</span
+              ><span *ngIf="confirmNewPassword.errors.pattern"
+            >Lozinka sme imati samo velika slova, mala slova i
+                  brojeve.</span
+            >
+            </div>
+          </div>
+          <div class="form-group">
+            <span class="form-control-title">Potvrda lozinke</span>
+            <input
+              type="password"
+              [ngClass]="
+                  newPasswordGroup.errors && confirmNewPassword.touched
+                    ? 'form-control-invalid'
+                  : 'form-control-valid'
+                "
+              formControlName="confirmNewPassword"
+            />
+            <div
+              *ngIf="newPasswordGroup.errors && confirmNewPassword.touched"
+              class="mt-1"
+            >
+              <span *ngIf="newPasswordGroup.errors">Lozinke nisu identične</span>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+          <button [disabled]="changePasswordForm.invalid" (click)="changePassword()">Sačuvaj izmene</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="content" *ngIf="activeContent === 'Narudžbine'">
+    <h4 class="ml-4" *ngIf="!showOrder">Moje narudžbine</h4>
+    <table border="1" *ngIf="!showOrder">
+      <tr class="header-row">
+        <th style="width: 10%">ID</th>
+        <th style="width: 25%">Datum</th>
+        <th style="width: 25%;">Ukupna cena</th>
+        <th style="width: 20%">Status</th>
+        <th style="width: 15%">Akcije</th>
+      </tr>
+      <tr *ngFor="let order of orders" class="order">
+        <td><span>#{{order.id}}</span></td>
+        <td><span>{{reformatDate(order.date)}}</span></td>
+        <td><span>{{order.totalPrice | pointReplacer}} RSD</span></td>
+        <td><span>{{order.status}}</span></td>
+        <td style="text-align: center"><a (click)="setShowOrder(true, order)">Detaljnije</a></td>
+      </tr>
+    </table>
+
+    <app-show-order *ngIf="showOrder" [order]="chosenOrder"></app-show-order>
+  </div>
+</div>
